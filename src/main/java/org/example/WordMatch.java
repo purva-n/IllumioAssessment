@@ -66,11 +66,8 @@ public class WordMatch {
 
         if(fp != null) {
             outputReady = fp.writeOutputToFile(map);
-            if (outputReady) {
-                System.out.println("Output file is ready!");
-            } else {
-                System.err.println("There was an error to exporting output file.");
-            }
+        } else {
+            outputReady = true;
         }
 
         return outputReady;

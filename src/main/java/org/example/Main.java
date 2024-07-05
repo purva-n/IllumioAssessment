@@ -8,8 +8,10 @@ public class Main {
 
         boolean successful = wd.matchWords();
 
-        if(successful) {
-            //get final map
+        if (successful) {
+            System.out.println("Output file is ready!");
+        } else {
+            System.err.println("There was an error to exporting output file.");
         }
 
     }
