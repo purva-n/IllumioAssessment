@@ -29,14 +29,32 @@ public class WordMatchTest {
     }
 
     @Test
-    public void WordMatchTest() {
+    public void WordMatchTestToCheckWordMatchWithoutPunctuation() {
         WordMatch wm = new WordMatch(this.predefinedWords, this.inputList);
         //Assertions.assertEquals(true, wm.matchWords());
         wm.matchWords();
         Map<String, Integer> map = wm.getWordMatchMap();
 
         Assertions.assertEquals(1, map.get("AI"));
+    }
+
+    @Test
+    public void WordMatchTestToCheckFullWordMatch() {
+        WordMatch wm = new WordMatch(this.predefinedWords, this.inputList);
+        //Assertions.assertEquals(true, wm.matchWords());
+        wm.matchWords();
+        Map<String, Integer> map = wm.getWordMatchMap();
+
         Assertions.assertEquals(0, map.get("detect"));
+    }
+
+    @Test
+    public void WordMatchTestToCheckCaseInsensitiveWordMatch() {
+        WordMatch wm = new WordMatch(this.predefinedWords, this.inputList);
+        //Assertions.assertEquals(true, wm.matchWords());
+        wm.matchWords();
+        Map<String, Integer> map = wm.getWordMatchMap();
+
         Assertions.assertEquals(2, map.get("firstname"));
     }
 }
