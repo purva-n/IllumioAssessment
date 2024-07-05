@@ -51,6 +51,7 @@ public class FileProcessor {
                 return fileProcessor;
             }
         } catch (FileNotFoundException e) {
+            System.err.println(e.getMessage());
             return null;
         }
     }

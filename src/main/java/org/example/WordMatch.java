@@ -13,6 +13,11 @@ public class WordMatch {
     private List<String> inputSentences;
     private List<String> predefinedWords;
 
+    /**
+     * Constructor to build WordMatch object
+     * @param predefinedWordsFile Predefined words file name
+     * @param inputFile Input File name
+     */
     public WordMatch(String predefinedWordsFile, String inputFile) {
         fp = FileProcessor.getInstance(predefinedWordsFile, inputFile);
         map = new ConcurrentSkipListMap<>(String.CASE_INSENSITIVE_ORDER);
@@ -20,6 +25,11 @@ public class WordMatch {
         predefinedWords = new ArrayList<>();
     }
 
+    /**
+     * Constructor to build class object
+     * @param predefinedWordsList List of predefined words
+     * @param inputLinesList List of Input sentences
+     */
     public WordMatch(List<String> predefinedWordsList, List<String> inputLinesList) {
         this.predefinedWords = predefinedWordsList;
         this.inputSentences = inputLinesList;
@@ -27,6 +37,10 @@ public class WordMatch {
         //this.fp = new FileProcessor();
     }
 
+    /**
+     * Method that starts the word matching
+     * @return whether completion of word match counting is successful
+     */
     public boolean matchWords() {
         boolean outputReady = false;
         if(fp != null) {
