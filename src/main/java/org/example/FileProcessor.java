@@ -22,10 +22,6 @@ public class FileProcessor {
     private static final String RELATIVE_FILE_UPLOAD_PATH_INPUT = "./src/resources/input/";
     private static final String RELATIVE_FILE_UPLOAD_PATH_OUTPUT = "./src/resources/output/";
 
-    public FileProcessor() {
-
-    }
-
     private FileProcessor(String predefinedWordsFileName, String inputToBeProcessedFileName) {
         predefinedWords = new File( RELATIVE_FILE_UPLOAD_PATH_INPUT + predefinedWordsFileName);
         inputToBeProcessed = new File(RELATIVE_FILE_UPLOAD_PATH_INPUT + inputToBeProcessedFileName);
