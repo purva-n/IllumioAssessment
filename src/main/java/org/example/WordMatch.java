@@ -3,12 +3,13 @@ package org.example;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Class to set up batching input lines for multi-threaded {@link WordMatch}
  */
 public class WordMatch {
-    private ConcurrentSkipListMap<String, Integer> map;
+    private ConcurrentSkipListMap<String, AtomicInteger> map;
     private FileProcessor fp;
     private List<String> inputSentences;
     private List<String> predefinedWords;
@@ -89,7 +90,7 @@ public class WordMatch {
 
     private void initializeMapOfPredefinedWords(List<String> predefinedWords) {
         for(String predefinedWord : predefinedWords) {
-            this.map.putIfAbsent(predefinedWord, 0);
+            this.map.putIfAbsent(predefinedWord, new AtomicInteger(0));
         }
     }
 

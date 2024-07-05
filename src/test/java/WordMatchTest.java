@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class WordMatchTest {
     List<String> inputList;
@@ -14,8 +15,16 @@ public class WordMatchTest {
         this.inputList = new ArrayList<>() {
             {
                 add("Detecting first names is tricky to do even with AI.");
-                add("how do you say a street name is not a first name?");
+                add("how do you say a street name is not a first-name?");
                 add("how do you say a firstname is a Firstname?");
+                add("this is an example of whole words John_Firstname_Doe!");
+                add("Detecting last names is tricky to do even with AI!");
+                add("A street name is not a first-name.");
+                add("2.how do you say a firstname is a Firstname?");
+                add("this is an example of whole words John_Firstname_Doe!");
+                add("my #firstname is john");
+                add("#peace #freedom #AI");
+                add("detect!");
             }
         };
 
@@ -33,9 +42,9 @@ public class WordMatchTest {
         WordMatch wm = new WordMatch(this.predefinedWords, this.inputList);
         //Assertions.assertEquals(true, wm.matchWords());
         wm.matchWords();
-        Map<String, Integer> map = wm.getWordMatchMap();
+        Map<String, AtomicInteger> map = wm.getWordMatchMap();
 
-        Assertions.assertEquals(1, map.get("AI"));
+        Assertions.assertEquals(2, map.get("AI").get());
     }
 
     @Test
@@ -43,9 +52,9 @@ public class WordMatchTest {
         WordMatch wm = new WordMatch(this.predefinedWords, this.inputList);
         //Assertions.assertEquals(true, wm.matchWords());
         wm.matchWords();
-        Map<String, Integer> map = wm.getWordMatchMap();
+        Map<String, AtomicInteger> map = wm.getWordMatchMap();
 
-        Assertions.assertEquals(0, map.get("detect"));
+        Assertions.assertEquals(1, map.get("detect").get());
     }
 
     @Test
@@ -53,8 +62,8 @@ public class WordMatchTest {
         WordMatch wm = new WordMatch(this.predefinedWords, this.inputList);
         //Assertions.assertEquals(true, wm.matchWords());
         wm.matchWords();
-        Map<String, Integer> map = wm.getWordMatchMap();
+        Map<String, AtomicInteger> map = wm.getWordMatchMap();
 
-        Assertions.assertEquals(2, map.get("firstname"));
+        Assertions.assertEquals(4, map.get("firstname").get());
     }
 }

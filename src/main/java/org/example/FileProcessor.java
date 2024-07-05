@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ConcurrentSkipListMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Class that processes input and output files.
@@ -87,12 +88,12 @@ public class FileProcessor {
      * @param map is the Concurrent tree map where the predefined word and its corresponding match count stored
      * @return whether the output file was created.
      */
-    public boolean writeOutputToFile(ConcurrentSkipListMap<String, Integer> map)  {
+    public boolean writeOutputToFile(ConcurrentSkipListMap<String, AtomicInteger> map)  {
         try {
             File output = new File(RELATIVE_FILE_UPLOAD_PATH_OUTPUT +  "output_"+ new Date().getTime()+".csv");
             try (PrintWriter pw = new PrintWriter(output)) {
                 pw.println("PredefinedWord, MatchCount");
-                map.entrySet().forEach(e -> pw.println(e.getKey() + "," + e.getValue()));
+                map.entrySet().forEach(e -> pw.println(e.getKey() + "," + e.getValue().get()));
             }
 
             return output.exists();

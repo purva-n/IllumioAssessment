@@ -1,5 +1,6 @@
-Detecting first names is tricky to do even with AI.
-how do you say a street name is not a first name?
-how do you say a last name is not a first name?
-how do you say a firstname is a Firstname?
-say a streetname is not a lastname?
+Detecting first names is tricky to do even with AI!!!!.
+2.how do you say a street name is not a first name?
+.how do you say a last name is not a first name?
+how do you say a firstname is a Firstname.
+say a streetname is not a lastname8?
+jon_firstname_doe

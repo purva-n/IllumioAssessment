@@ -15,7 +15,7 @@ Note: Your system must have Java Runtime Engine to run the project
 ### Input files
 - The program requires atleast two input files. PredefineWordsTextFile, InputFile.
 - At this time the project supports only .txt files, where inputs and words are separated on new lines.
-- Place the input files in the `src\resources\input` folder under the `IllumioAssessment` root folder.
+- Place the input files in the `src/resources/input` folder under the `IllumioAssessment` root folder.
 
 ## Usage
 
@@ -29,28 +29,28 @@ Note: Your system must have Java Runtime Engine to run the project
 
 1. Run the pre-compiled jar file
 ```bash
-java -jar .\target\IllumioAssessment-1.0-SNAPSHOT.jar <PredefineWordsTextFileName.txt> <InputFileName.txt>
+java -jar ./target/IllumioAssessment-1.0-SNAPSHOT.jar <PredefineWordsTextFileName.txt> <InputFileName.txt>
 ```
 
 2. Run the program by yourself.
 - Compile
 ```bash
-javac .\src\main\java\org\example\*.java
+javac ./src/main/java/org/example/*.java
 ```
 - Execute
 ```bash
-java -cp ".\target\classes" org.example.Main <PredefineWordsTextFileName.txt> <InputFileName.txt>
+java -cp "./target/classes" org.example.Main <PredefineWordsTextFileName.txt> <InputFileName.txt>
 ```
 
 ## Output
 
 - As successful execution, the program automatically places the word and its match count in a new output file on every new execution.
-- Find the output files, placed at `src\resources\output` folder under the `IllumioAssessment` root folder.
+- Find the output files, placed at `src/resources/output` folder under the `IllumioAssessment` root folder.
 - The output is `.csv` file.
 
 ## Test
 
-There is a test suite included for the project. Tests are places at `src\test` under the `IllumioAssessment` root folder.
+There is a test suite included for the project. Tests are places at `src/test` under the `IllumioAssessment` root folder.
 1. Test to word match regardless of punctuation marks attached to the words of inputs.
 2. Test to word match the entire word instead of a partial word match of the predefined word in the inputs.
 3. Test to word match of predefined words to input sentence words are case insensitive.
