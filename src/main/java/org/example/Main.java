@@ -2,13 +2,14 @@ package org.example;
 
 public class Main {
     public static void main(String[] args) {
-        String predefinedWordsFileName = null;
-        String inputFileName = null;
+        String predefinedWordsFileName;
+        String inputFileName;
         try {
             predefinedWordsFileName = args[0];
             inputFileName = args[1];
         } catch (Exception e) {
-
+            System.err.println("File name arguments missing");
+            return;
         }
 
         if(inputFileName == null || inputFileName.isEmpty()) {

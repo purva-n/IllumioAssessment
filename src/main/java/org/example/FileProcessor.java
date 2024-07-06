@@ -16,8 +16,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class FileProcessor {
     private File predefinedWords;
     private File inputToBeProcessed;
-    private List<String> predefinedWordList;
-    private List<String> inputToBeProcessedList;
     private static FileProcessor fileProcessor = null;
     private static final String RELATIVE_FILE_UPLOAD_PATH_INPUT = "./src/resources/input/";
     private static final String RELATIVE_FILE_UPLOAD_PATH_OUTPUT = "./src/resources/output/";
@@ -36,10 +34,10 @@ public class FileProcessor {
     public static FileProcessor getInstance(String predefinedWordsFileName, String inputToBeProcessedFileName) {
 
         try {
-            if (predefinedWordsFileName.isEmpty() || predefinedWordsFileName == null)
+            if (predefinedWordsFileName == null || predefinedWordsFileName.isEmpty())
             { throw new FileNotFoundException("Check Predefined File or spelling"); }
 
-            if (inputToBeProcessedFileName.isEmpty() || inputToBeProcessedFileName == null)
+            if (inputToBeProcessedFileName == null || inputToBeProcessedFileName.isEmpty())
             { throw new FileNotFoundException("Check Predefined File or spelling"); }
             if (fileProcessor == null) {
                 fileProcessor = new FileProcessor(predefinedWordsFileName, inputToBeProcessedFileName);
@@ -59,7 +57,7 @@ public class FileProcessor {
      */
     public List<String> getInputToBeProcessed() {
         try {
-            return Files.readAllLines(this.inputToBeProcessed.toPath());
+            return Files.readAllLines(this.inputToBeProcessed.toPath()).stream().filter(l -> !l.isEmpty()).toList();
         } catch (IOException e) {
             //throw new RuntimeException(e);
             return null;
@@ -72,7 +70,7 @@ public class FileProcessor {
      */
     public List<String> getPredefinedWordList() {
         try {
-            return Files.readAllLines(this.predefinedWords.toPath());
+            return Files.readAllLines(this.predefinedWords.toPath()).stream().filter(l -> !l.isEmpty()).toList();
         } catch (IOException e) {
             //throw new RuntimeException(e);
             return null;
